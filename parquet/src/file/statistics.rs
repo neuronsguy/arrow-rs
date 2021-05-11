@@ -220,13 +220,10 @@ pub fn to_thrift(stats: Option<&Statistics>) -> Option<TStatistics> {
         (None, None)
     };
 
-    if stats.is_min_max_deprecated() {
-        thrift_stats.min = min;
-        thrift_stats.max = max;
-    } else {
-        thrift_stats.min_value = min;
-        thrift_stats.max_value = max;
-    }
+    thrift_stats.min = min.clone();
+    thrift_stats.max = max.clone();
+    thrift_stats.min_value = min.clone();
+    thrift_stats.max_value = max.clone();
 
     Some(thrift_stats)
 }
